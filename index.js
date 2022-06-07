@@ -1,5 +1,10 @@
 const cheerio = require('cheerio');
 const axios = require("axios");
+const express = require('express')
+
+const app = express();
+
+const port = 5000
 
 
 const fox = []
@@ -18,5 +23,10 @@ axios.get('https://www.foxnews.com/')
     console.log(fox)
 }).catch(err=>console.log(err))
 
+app.get('/', (req, res) => {
+    res.send(fox)
+  })
 
-
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+  })
